@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package todo;
+
+service TodoService {
+  rpc AddTodo(Todo) returns (Response) {}
+  rpc GetTodos(NoArgs) returns (stream Todo) {}
+}
+
+message Todo {
+  string name = 1;
+  bool done = 2;
+}
+
+message NoArgs {}
+
+message Response {
+  bool created = 1;
+  Todo todo = 2;
+}
